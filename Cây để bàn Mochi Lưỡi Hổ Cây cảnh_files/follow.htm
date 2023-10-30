@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" ml-update="aware"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Zalo Widget FollowOA</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="description here">
+    <link href="follow_data/layout.css" rel="stylesheet" type="text/css">
+    <script src="follow_data/sdk-server.js"></script>
+    <style>
+      .zs-developBy{
+        position: absolute;
+        font-size: 11px;
+        z-index: 100;
+        top: 10;
+        top: 14px;
+        color: #a2a2a2 !important;
+        right: 10px;
+      }
+      .zs-developBy i {
+        position: relative;
+        top: -1px;
+        display: inline-block;
+        background: url(https://sp-zp.zdn.vn/chatwidget/images/ic_zalo_footer.png) 0 0 no-repeat;
+        background-size: cover;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        margin-left: 2px;
+        z-index: 100;
+      }
+      
+      #zs-nb-deB  {
+        color: #008fe5 !important;
+        top: 27px !important;
+        right: 5px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="zwf">
+       
+      
+      
+      <div class="zwf-container non-cover">
+        <div class="zwf-cover">
+          <div class="zwf-info">
+            <div class="zwf-table">
+              <div class="zwf-tableCell">
+                  <span style="background-image:url(https://s160-ava-talk.zadn.vn/4/8/1/b/1/160/139fcfcd14189baffa9cb2b5e82404cb.jpg)" class="zwf-avatar"></span>
+                  <span class="zwf-title">Hoa Yêu Thương</span>
+                  <span class="zwf-desc">Hoayeuthuong.com là một website
+ chuyên cung cấp dịch vụ điện hoa, quà tặng chuyên nghiệp đến khắp các 
+tỉnh, thành phố trên cả nước Với Thông điệp Flower Delivery Expert, 
+chúng tôi hướng đến một dịch vụ chuyên nghiệp trong việc truyền tải 
+những thông điệp, cảm xúc của người tặng đến người nhận.</span>
+              </div>
+            </div>
+          </div>
+          <div style="background-image:url()" class="zwf-img zwf-aspectRatio zwf-aspectRatio--16-9"></div>
+        </div>
+        <div class="zwf-func">
+            
+            <span class="zwf-wr-btn" onclick="followNow()"><a href="#!" class="zwf-btn"><i class="zwf-ic zwf-ic-zalo"></i><span id="follow">Quan tâm</span></a></span>
+            
+            
+        </div>
+      </div>
+    
+      <div class="zwf-related-post"><span class="zwf-rp-title">Bài viết mới nhất</span>
+          
+        <ul>
+          <li>
+              <div class="zwf-rp-item"><a href="http://media.zalo.me/detail/1438598198492740243?id=5afb3b0c93497a172358&amp;zarsrc=770" target="_blank">
+                <span style="background-image:url(https://zalo-article-photo.zadn.vn/168f8de1ebab02f55bba#257592141images/upload/cover_demo.png)" class="zwf-rp-img"></span>
+              <div class="zwf-rp-desc"><span>GIÁNG SINH ĐẾN RỒI, CHỌN QUÀ NGAY THÔI🎅🎁</span></div></a>
+            </div>
+          </li>
+        </ul>
+          
+        <ul>
+          <li>
+              <div class="zwf-rp-item"><a href="http://media.zalo.me/detail/1438598198492740243?id=3906da19415ca802f14d&amp;zarsrc=770" target="_blank">
+                <span style="background-image:url(https://zalo-article-photo.zadn.vn/780511df358bdcd5859a#286794237images/upload/cover_demo.png)" class="zwf-rp-img"></span>
+              <div class="zwf-rp-desc"><span>MỚI LẠ NHỮNG THIẾT KẾ TỪ "SEN ĐÁ"</span></div></a>
+            </div>
+          </li>
+        </ul>
+          
+        <ul>
+          <li>
+              <div class="zwf-rp-item"><a href="http://media.zalo.me/detail/1438598198492740243?id=bc838ba219e7f0b9a9f6&amp;zarsrc=770" target="_blank">
+                <span style="background-image:url(https://zalo-article-photo.zadn.vn/16561250e804015a5815#298253646images/upload/cover_demo.png)" class="zwf-rp-img"></span>
+              <div class="zwf-rp-desc"><span>🔥🔥ĐỌC LỜI YÊU "PHUNUTUYETVOI" ĐỂ GIẢM NGAY 100K KHI MUA HOA TRỰC TIẾP TẠI CỬA HÀNG❤</span></div></a>
+            </div>
+          </li>
+        </ul>
+          
+      </div>
+    
+    </div>
+      
+    <!-- Include Plugin-->
+    <script>
+    var oaid = '1438598198492740243';
+    var followFlg = '-7';
+    var ISLOGGED = '';
+    var OAUTH_DOMAIN = 'https://id.zalo.me';
+    var logged = 'logged';
+    var ANDROID = '';
+    var IOS = '';
+    var cKey = '-1581913466288964815';
+    var zShareTimer = null;
+    var atk = '';
+    
+    var isMobile = /iPhone|iPad|iPod|Android|windows phone/i.test(navigator.userAgent);
+    
+    function followNow() {
+        if (isMobile) {
+            ZSDKServer.postMessage(ZSDKMessageType.REDIRECT, {
+                url: "http://zalo.me/" + oaid
+            });
+            return;
+        }
+        
+        if ("logged"===logged) {
+            var url = "https://id.zalo.me/account";
+            openInNewTab(url);
+            
+        } else {
+            if (followFlg < 0 ) {
+            ZSDKServer.getAPI("https://sp.zalo.me/ajax?action=9&oaid=" + oaid + "&t=" + atk + "&isWidget=true", function (resp) {
+               var data = JSON.parse(resp);
+                   if (data.isLogged === 'logged') {
+                       followLogged(data);
+                   } 
+              });
+            } else {
+                var url = "https://chat.zalo.me?c=" + cKey;
+                openInNewTab(url);
+            }
+        }
+    }
+    
+    function followLogged(resp) {
+        followFlg = resp.followFlg;
+        var node = document.getElementById("follow");
+        node.innerText = followFlg < 0 ? "Quan tâm" : "Gửi tin nhắn";
+    }
+
+    
+    function openPopup() {
+        var continueUrl = encodeURIComponent("https://id.zalo.me/account?display=popup&auto_close=true");
+        openInPopup(OAUTH_DOMAIN+"/account?continue=" + continueUrl, "Zalo Login",500, 600);    
+    }
+    
+    function openInPopup(url, title, width, height) {
+        var newWindow = popupCenter(url, title, width, height);
+
+        //listen if window closed
+        if (zShareTimer !== null) {
+            clearInterval(zShareTimer);
+        }
+        zShareTimer = setInterval(function(){   
+            if (newWindow.closed) {  
+                clearInterval(zShareTimer);
+                zShareTimer = null;
+                
+                location.reload();
+            }  
+        }, 1000); 
+    }
+    
+    function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+        
+        //listen if window closed
+        if (zShareTimer !== null) {
+            clearInterval(zShareTimer);
+        }
+        zShareTimer = setInterval(function(){   
+            if (win.closed) {  
+                clearInterval(zShareTimer);
+                zShareTimer = null;
+                
+                location.reload();
+            }  
+        }, 1000); 
+    }
+    
+    function popupCenter(url, title, w, h) {
+        var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+        var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+        var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+        var top = ((height / 2) - (h / 2)) + dualScreenTop;
+        var newWindow = window.open(url, title, 'directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+        if (window.focus) {
+            newWindow.focus();
+        }
+        return newWindow;
+    }
+    
+    window.onload = function () {
+        ZSDKServer.init();
+
+        ZSDKServer.subscribe("zfollow_reload", function () {
+            window.location.reload();
+        });
+
+    };
+    
+    </script>
+  
+</body></html>
